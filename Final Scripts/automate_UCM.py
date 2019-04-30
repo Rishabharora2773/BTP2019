@@ -141,7 +141,7 @@ def createAlternateFlowOrigin(bf_obj,af_obj,itr,f):
 			temp_key = 'Po1'
 			fromnode = "UC"+str(itr)+'_'+str(temp_key)
 		#print('key',key,'temp key ',temp_key)
-		fromnode = "epUC"+str(itr)+'_'+str(temp_key)
+		#fromnode = "epUC"+str(itr)+'_'+str(temp_key)
 
 		for val in bf_obj[key].associated_alternate_flow_origin:
 			if val == 'nan':
