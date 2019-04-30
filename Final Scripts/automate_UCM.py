@@ -132,11 +132,14 @@ def createAlternateFlowOrigin(bf_obj,af_obj,itr,f):
 	sorted_list = sorted(bf_obj.keys())
 	for key in sorted_list:
 		temp_key = ''
+		fromnode = ''
 		if sorted_list.index(key) != (len(sorted_list) - 1):
 			ind = int(key[1]) + 1
 			temp_key = key[0] + str(ind)
+			fromnode = "epUC"+str(itr)+'_'+str(temp_key)
 		else :
 			temp_key = 'Po1'
+			fromnode = "UC"+str(itr)+'_'+str(temp_key)
 		#print('key',key,'temp key ',temp_key)
 		fromnode = "epUC"+str(itr)+'_'+str(temp_key)
 
@@ -207,6 +210,7 @@ def automate_UCM_main(UC,UC_1,comp_assigned_p,components_map_p,af_lengths_p,name
 	f = open(name+".dot","w")
 
 	f.write("digraph G{\n")
+	f.write("\tlabel="+name+"\n")
 	f.write("\tforcelabels=true\n\tedge[headclip=false, tailclip=false]\n\trankdir=LR\n")
 	f.write(precondition(UC_1,itr))
 	f.write(postcondition(UC_1,itr))

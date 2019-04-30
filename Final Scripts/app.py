@@ -53,10 +53,12 @@ def uploader():
 				System_components_map[comp] = resp_list
 			
 			itr = itr + 1
+		
 		so.system_overview_main(System_nt_obj,System_components_map,System_resp_map,System_comp_assigned,System_UC_obj,System_af_lengths,UC_name_map)
 		render('dot','png',"system_overview.dot")
 		img = Image.open("system_overview.dot.png")
 		img.show()
+		
 	return 'File Uploaded Successfully!'
 
 @app.route('/upload')

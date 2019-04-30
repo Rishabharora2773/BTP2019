@@ -146,15 +146,18 @@ def createAlternateFlowOrigin(sys_UC_obj,f):
 	for val in sys_UC_obj:
 		bf_obj = val.basic_flow
 		af_obj = val.alternate_flow
+		au.createAlternateFlowOrigin(bf_obj,af_obj,itr,f)
+		'''
 		for key in bf_obj:
 			fromnode = "epUC"+str(itr)+'_'+str(key)
-
+			print("system from node",fromnode)
 			for val in bf_obj[key].associated_alternate_flow_origin:
 				if val == 'nan':
 					break
 				to = "epUC"+str(itr)+'_'+str(val)+"_1"
 				label = af_obj[val].description
 				f.write("\t%s->%s[label=\"[%s]\"]\n"%(fromnode,to,label))
+		'''
 		itr = itr + 1
 
 def createAlternateFlowJoin(sys_UC_obj,sys_af_lengths,f):
@@ -176,6 +179,7 @@ colours = ['cadetblue1','chartreuse2','yellow','lightpink','mediumorchid1','crim
 def system_overview_main(sys_nt_obj,sys_comp_map,sys_resp_map,sys_comp_assigned,sys_UC_obj,sys_af_lengths,uc_name_map):
 	f = open("system_overview.dot","w")
 	f.write("digraph G{\n")
+	f.write("\tlabel=system_overview\n")
 	f.write("\tforcelabels=true\n\tedge[headclip=false, tailclip=false]\n\trankdir=LR\n")
 	f.write(preConditions(sys_nt_obj,f))
 	f.write(postConditions(sys_nt_obj,f))

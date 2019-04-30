@@ -45,6 +45,7 @@ def getResponsibility(text):
 
 def getBasicFlowResponsibility(UC,UC_1,components_map,af_lengths,comp_assigned,uc_id):
     for id in UC.basic_flow.keys():
+        print('str id ',id)
         key_id = "UC"+str(uc_id)+"_"+str(id)
         resp = UC.basic_flow[id]
         event = str(resp.event)
