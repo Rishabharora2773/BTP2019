@@ -1,4 +1,4 @@
-* {box-sizing:border-box}
+*{box-sizing:border-box}
 body, html {padding:0; margin:0} 
 body {background:#232323; color:#fff}
 .opaque {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; background:#d2d6f1;}
