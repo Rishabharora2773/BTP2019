@@ -68,34 +68,34 @@ def reading_excel_main():
 	df = pd.read_excel(excel_file)
 	df_len = df.shape[0]
 	for row in df.itertuples():
-	    if row[1] == 'Use case name':
-	    	if(str(row[2]) == 'nan'):
-	    		continue
-	        UC.name = row[2]
-	    elif (row[1] == 'Primary Actor' or row[1] == 'Secondary Actor'):
-	    	if(str(row[2]) == 'nan'):
-	    		continue
-	    	UC.components.extend(row[2].split(","))	    	
-	    elif (row[1] == 'Dependency'):
-	    	if(str(row[2]) == 'nan'):
-	    		continue
-	        getUC(UC,row[2])
-	    elif (row[1] == 'Pre-conditions'):
-	    	pr_rows = countNan(df,row[0],df_len)        
-	    	getPreConditions(UC,df,row[0]+1,row[0]+pr_rows+1)
-	        #UC.pre_condition = row[2]
-	    elif (row[1] == 'Basic Flow'):
-	        bf_rows = countNan(df,row[0],df_len)
-	        getBasicFlow(UC,df,row[0]+1,row[0]+bf_rows+1)		
-	    elif (row[1] == 'Sub Flow'):
-	        sf_rows = countNan(df,row[0],df_len)
-	        getSubFlow(UC,df,row[0]+1,row[0]+sf_rows+1)
-	    elif (row[1] == 'Alternate Flow'):
-	        af_rows = countNan(df,row[0],df_len)
-	        getAlternateFlow(UC,df,row[0]+1,row[0]+af_rows+1)
-	    elif (row[1] == 'Post-Conditions'):
-	        pc_rows = countNan(df,row[0],df_len)        
-	        getPostConditions(UC,df,row[0]+1,row[0]+pc_rows+1)
-	        #UC.post_conditions = row[2]
-	        
+		if row[1] == 'Use case name':
+			if(str(row[2]) == 'nan'):
+				continue
+			UC.name = row[2]
+		elif (row[1] == 'Primary Actor' or row[1] == 'Secondary Actor'):
+			if(str(row[2]) == 'nan'):
+				continue
+			UC.components.extend(row[2].split(","))	    	
+		elif (row[1] == 'Dependency'):
+			if(str(row[2]) == 'nan'):
+				continue
+			getUC(UC,row[2])
+		elif (row[1] == 'Pre-conditions'):
+			pr_rows = countNan(df,row[0],df_len)        
+			getPreConditions(UC,df,row[0]+1,row[0]+pr_rows+1)
+			#UC.pre_condition = row[2]
+		elif (row[1] == 'Basic Flow'):
+			bf_rows = countNan(df,row[0],df_len)
+			getBasicFlow(UC,df,row[0]+1,row[0]+bf_rows+1)		
+		elif (row[1] == 'Sub Flow'):
+			sf_rows = countNan(df,row[0],df_len)
+			getSubFlow(UC,df,row[0]+1,row[0]+sf_rows+1)
+		elif (row[1] == 'Alternate Flow'):
+			af_rows = countNan(df,row[0],df_len)
+			getAlternateFlow(UC,df,row[0]+1,row[0]+af_rows+1)
+		elif (row[1] == 'Post-Conditions'):
+			pc_rows = countNan(df,row[0],df_len)        
+			getPostConditions(UC,df,row[0]+1,row[0]+pc_rows+1)
+			#UC.post_conditions = row[2]
+			
 	return UC

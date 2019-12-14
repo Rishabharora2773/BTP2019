@@ -22,8 +22,8 @@ def findComponent(sentence):
     return ''
 
 def getResponsibility(text):
-    print("get resp text",text)
-    doc = nlp(unicode(text))
+    #print("get resp text",text)
+    doc = nlp(str(text))
     '''
     doc = [word.text for word in doc if not word.is_stop]
     p_text = ''
@@ -40,12 +40,12 @@ def getResponsibility(text):
         if chunk.root.dep_ == 'dobj':
             resp = str(chunk.root.head.text) + ' ' + str(chunk.text)
 
-    print('comp ',comp,'resp ',resp)
+    #print('comp ',comp,'resp ',resp)
     return str(comp),str(resp)
 
 def getBasicFlowResponsibility(UC,UC_1,components_map,af_lengths,comp_assigned,uc_id):
     for id in UC.basic_flow.keys():
-        print('str id ',id)
+        #print('str id ',id)
         key_id = "UC"+str(uc_id)+"_"+str(id)
         resp = UC.basic_flow[id]
         event = str(resp.event)
@@ -114,8 +114,8 @@ def getBasicFlowResponsibility(UC,UC_1,components_map,af_lengths,comp_assigned,u
 def getAlternateFlowResponsibility(UC,UC_1,components_map,af_lengths,comp_assigned,uc_id):
     for id in UC.alternate_flow.keys():
         val = UC.alternate_flow[id]
-        print('id is ',id)
-        print('val is ',val.action)
+        #print('id is ',id)
+        #print('val is ',val.action)
         if(str(val.action) == ''):
             resp_id = "UC"+str(uc_id)+"_"+str(id)+"_1"
             UC_1.af_responsibility[resp_id] = 'No responsibility found'

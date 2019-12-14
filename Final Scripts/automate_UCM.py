@@ -158,7 +158,7 @@ def createUnassignedNodes(comp_assigned,af_nlp,bf_nlp,f):
 			id_list.append(id)
 	for id in id_list:
 		if id in af_nlp.keys():
-			print("af resp",af_nlp[id])
+			#print("af resp",af_nlp[id])
 			if str(af_nlp[id]).find("Include UC") != -1:
 				createStaticStub(af_nlp[id],id,f)
 			elif str(af_nlp[id]).find("Exclude UC") != -1:
@@ -229,5 +229,5 @@ def automate_UCM_main(UC,UC_1,comp_assigned_p,components_map_p,af_lengths_p,name
 	f.write("}")
 	f.close()
 	render('dot','png',name+".dot")
-	img = Image.open(name+".dot.png")
-	img.show()
+	#img = Image.open(name+".dot.png")
+	#img.show()
