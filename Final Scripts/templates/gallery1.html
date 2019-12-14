@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UCM</title>
+
+</head>
+<body>
+    Files uploaded successfully!!!
+    <hr>
+    {% for image_name in image_names %}
+        <img class="img-responsive" src=" {{url_for('static', filename=image_name)}}">
+        <br>
+    {% endfor %}
+    
+</body>
+</html>
